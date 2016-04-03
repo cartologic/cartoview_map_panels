@@ -1,0 +1,72 @@
+<div ng-app="mapPanelsApp" ng-controller="mapPanelsController">
+	<div ui-layout="rowLayoutOptions" >
+		{% if show_tbar %}
+		<div ui-layout-container size="55px">
+			{% include 'site_header.html' %}
+		</div>
+		{% endif %}
+		{% if instance.config_obj.show_top_panel %}
+		<div ui-layout-container size="20%" class="panel panel-default">
+			<div class="panel-heading" ng-if="appConfig.top_panel_title != ''">
+				{% verbatim %}
+				{{ appConfig.top_panel_title }}
+				{% endverbatim %}
+			</div>
+			<div class="panel-body" ng-class="{'with-title':appConfig.top_panel_title != ''}">
+				<div class="panel-content">
+					<div class="markdown" btf-markdown="appConfig.top_panel_content"></div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		<div ui-layout-container="central" >
+			<div ui-layout="columnLayoutOptions" >
+				{% if instance.config_obj.show_left_panel %}
+				<div ui-layout-container size="25%" class="panel panel-default">
+					<div class="panel-heading" ng-if="appConfig.left_panel_title != ''">
+						{% verbatim %}
+						{{ appConfig.left_panel_title }}
+						{% endverbatim %}
+					</div>
+					<div class="panel-body" ng-class="{'with-title':appConfig.left_panel_title != ''}">
+						<div class="panel-content">
+							<div class="markdown" btf-markdown="appConfig.left_panel_content"></div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				<div ui-layout-container >
+					<cartoview-map map-id="{{app_id}}" config-url="{% url 'map_panels.map_config' %}?id={{app_id}}"></cartoview-map>
+				</div>
+				{% if instance.config_obj.show_right_panel %}
+				<div ui-layout-container size="25%" class="panel panel-default">
+					<div class="panel-heading" ng-if="appConfig.right_panel_title != ''">
+						{% verbatim %}
+						{{ appConfig.right_panel_title }}
+						{% endverbatim %}
+					</div>
+					<div class="panel-body" ng-class="{'with-title':appConfig.right_panel_title != ''}">
+						<div class="panel-content">
+							<div class="markdown" btf-markdown="appConfig.right_panel_content"></div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% if instance.config_obj.show_bottom_panel %}
+		<div ui-layout-container size="20%" class="panel panel-default">
+			<div class="panel-heading" ng-if="appConfig.bottom_panel_title != ''">
+				{% verbatim %}
+				{{ appConfig.bottom_panel_title }}
+				{% endverbatim %}
+			</div>
+			<div class="panel-body" ng-class="{'with-title':appConfig.bottom_panel_title != ''}">
+				<div class="panel-content">
+					<div class="markdown" btf-markdown="appConfig.bottom_panel_content"></div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+	</div>
+</div>

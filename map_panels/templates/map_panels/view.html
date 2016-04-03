@@ -1,0 +1,20 @@
+{% extends "site_base.html" %}
+{% load bootstrap staticfiles%}
+{% load i18n %}
+
+{% block title %} {{ map_layer.title }} — {{ block.super }} {% endblock %}
+
+{% block extra_head %}
+    {% include 'map_panels/view_css.html' %}
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block extra_script %}
+    {% include "map_panels/view_js.html" %}
+{% endblock %}
+
+{% block middle %}
+    {% include 'map_panels/view_html.html' %}
+{% endblock %}
