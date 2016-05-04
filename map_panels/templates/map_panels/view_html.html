@@ -1,10 +1,6 @@
 <div ng-app="mapPanelsApp" ng-controller="mapPanelsController">
 	<div ui-layout="rowLayoutOptions" >
-		{% if show_tbar %}
-		<div ui-layout-container size="55px">
-			{% include 'site_header.html' %}
-		</div>
-		{% endif %}
+
 		{% if instance.config_obj.show_top_panel %}
 		<div ui-layout-container size="20%" class="panel panel-default">
 			<div class="panel-heading" ng-if="appConfig.top_panel_title != ''">
