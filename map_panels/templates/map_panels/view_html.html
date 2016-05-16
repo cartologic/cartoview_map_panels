@@ -32,7 +32,7 @@
 				</div>
 				{% endif %}
 				<div ui-layout-container >
-					<cartoview-map map-id="{{app_id}}" config-url="{% url 'map_panels.map_config' %}?id={{app_id}}"></cartoview-map>
+					<cartoview-map map-id="{{instance_id}}" config-url="{% url 'map_panels.map_config' %}?id={{instance_id}}"></cartoview-map>
 				</div>
 				{% if instance.config_obj.show_right_panel %}
 				<div ui-layout-container size="25%" class="panel panel-default">

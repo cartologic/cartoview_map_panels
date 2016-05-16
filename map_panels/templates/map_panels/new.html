@@ -1,0 +1,89 @@
+{% extends "apps/new_instance.html" %}
+
+{% block new_instance_scripts %}
+    <script type="text/javascript">
+        window.angularAppDependencies = [];
+        {% if instance_id %}
+        window.instanceId = {{ instance_id }};
+        {% endif %}
+    </script>
+    {{ block.super }}
+    <script type="text/javascript" src="{{ STATIC_URL }}map_panels/js/config-fields.js"></script>
+{% endblock new_instance_scripts %}
+
+{% block config_field %}
+    <map-panels-config-fields></map-panels-config-fields>
+{% endblock config_field %}
+
+{% block angular_templates %}
+    {% verbatim %}
+    <script type="text/ng-template" id="map-panels-config-fields.html">
+        <div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="instanceObj.config.show_left_panel"> Show Left Panel
+                </label>
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_left_panel">
+                <label >Left Panel Title</label>
+                <input type="text" class="form-control" ng-model="instanceObj.config.left_panel_title" placeholder="Left Panel Title">
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_left_panel">
+                <label >Left Panel Content</label>
+                <textarea class="form-control" rows="10" ng-model="instanceObj.config.left_panel_content"
+                          placeholder="Left Panel Content"></textarea>
+            </div>
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="instanceObj.config.show_top_panel"> Show Top Panel
+                </label>
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_top_panel">
+                <label >Top Panel Title</label>
+                <input type="text" class="form-control" ng-model="instanceObj.config.top_panel_title" placeholder="Top Panel Title">
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_top_panel">
+                <label >Top Panel Content</label>
+                <textarea class="form-control" rows="10" ng-model="instanceObj.config.top_panel_content"
+                          placeholder="Top Panel Content"></textarea>
+            </div>
+
+
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="instanceObj.config.show_right_panel"> Show Right Panel
+                </label>
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_right_panel">
+                <label >Right Panel Title</label>
+                <input type="text" class="form-control" ng-model="instanceObj.config.right_panel_title" placeholder="Right Panel Title">
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_right_panel">
+                <label >Right Panel Content</label>
+                <textarea class="form-control" rows="10" ng-model="instanceObj.config.right_panel_content"
+                          placeholder="Right Panel Content"></textarea>
+            </div>
+
+
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" ng-model="instanceObj.config.show_bottom_panel"> Show Bottom Panel
+                </label>
+            </div>
+
+            <div class="form-group" ng-show="instanceObj.config.show_bottom_panel">
+                <label >Bottom Panel Title</label>
+                <input type="text" class="form-control" ng-model="instanceObj.config.bottom_panel_title" placeholder="Bottom Panel Title">
+            </div>
+            <div class="form-group" ng-show="instanceObj.config.show_bottom_panel">
+                <label >Bottom Panel Content</label>
+                <textarea class="form-control" rows="10" ng-model="instanceObj.config.bottom_panel_content"
+                          placeholder="Bottom Panel Content"></textarea>
+            </div>
+
+        </div>
+    </script>
+    {% endverbatim %}
+{% endblock angular_templates %}
